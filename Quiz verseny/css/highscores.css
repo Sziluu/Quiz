@@ -1,0 +1,58 @@
+body {
+    color: white;
+}
+
+#highScoresList{
+    list-style: none;
+    margin-bottom: 4rem;
+}
+
+.high-score {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, var(--second-color) 0%, var(--first-color) 100%);
+    color: hsl(203,8%,98%);
+    border: none;
+    border-radius:.75rem;
+}
+
+#highScores h1{
+    margin-bottom: 8rem;
+    font-size: 6rem;
+}
+
+.home__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 767px){
+    .home__container{
+        text-align: center;
+    }
+
+    #highScores h1{
+        font-size: 4.5rem;
+    }
+
+    .high-score{
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .home__container{
+        text-align: center;
+    }
+
+    #highScores h1{
+        font-size: 3.7rem;
+    }
+
+    .high-score{
+        font-size: 1.9rem;
+    }
+}

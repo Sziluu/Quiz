@@ -1,0 +1,800 @@
+/*================== GOOGLE FONTS =================*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/*================== VARIABLE CSS =================*/
+:root {
+    --header-height: 3.5rem;
+
+    /*================== Colors =================*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --first-color: hsl(203,71%,60%);
+    --second-color: hsl(277,56%,68%);
+    --text-color: hsl(203,8%,98%);
+    --text-color: hsl(203,8%,80%);
+    --body-color: hsl(259,20%,18%);
+
+    /*================== Font and typography =================*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: 'Poppins', sans-serif;
+    --biggest-font-size: 2.25rem;
+    --h2-font-size: 1.25rem;
+    --normal-font-size: .938rem;
+
+    /*================== Font weight =================*/
+    --font-semi-bold: 600;
+
+    /*================== z index =================*/
+    --z-fixed: 100;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+    :root {
+        --biggest-font-size: 4rem;
+        --h2-font-size: 1.5rem;
+        --normal-font-size: 1rem;
+        --smaller-font-size: .813rem;
+    }
+}
+
+/*================== BASE =================*/
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+/*================== REUSABLE CSS CLASSES =================*/
+.container{
+    max-width: 1024px;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+.main{
+    overflow: hidden; /* az animaciok miatt */
+}
+
+/*================== HEADER AND NAV =================*/
+.header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    transition: background .3s;
+}
+
+.nav{
+    position: relative;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo{
+    font-family: var(--body-font);
+}
+
+.nav__logo,
+.nav__toggle,
+.nav__link,
+.nav__close{
+    color: var(--text-color);
+}
+
+.nav__toggle{
+    display: inline-flex;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 766px){
+    .nav__menu{
+        position: fixed;
+        background-color: var(--body-color);
+        width: 100%;
+        left: 0;
+        top: -160%;
+        box-shadow: 0 3px 8px hsla(203, 71%, 4%, .2);
+        padding: 4rem 0 3.5rem;
+        transition: top .4s;
+        overflow: hidden;
+    }
+}
+
+.nav__list{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 2rem;
+}
+
+.nav__link{
+    font-weight: var(--font-semi-bold);
+    transition: color .4s;
+}
+
+.nav__link:hover{
+    color: var(--first-color);
+}
+
+.nav__close{
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Show menu */
+.show-menu{
+    top: 0;
+}
+
+/* Active link */
+.active-link{
+    background: linear-gradient(90deg, var(--second-color) 0%, var(--first-color) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Change background header */
+.header-bg{
+    background-color: var(--body-color);
+    box-shadow: 0 2px 4px hsla(203, 71%, 15%, .5);
+}
+
+/*================== HOME =================*/
+.home,
+.home__container{
+    position: relative;
+}
+
+.home__container{
+    padding-top: 8rem;
+    height: 100vh;
+    display: grid;
+    row-gap: 1rem;
+}
+
+.home__title{
+    font-size: var(--biggest-font-size);
+    margin-bottom: .75rem;
+}
+
+.home__title span{
+    background: linear-gradient(90deg, var(--second-color) 0%, var(--first-color) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.home__description{
+    font-weight: 600;
+}
+
+.home__description{
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.highscore__button{
+    display: inline-block;
+    background: linear-gradient(95deg, var(--second-color) 0%, var(--first-color) 100%);
+    padding: 1rem 2rem;
+    border-radius: .75rem;
+    color: var(--text-color);
+    font-weight: var(--font-semi-bold);
+    transition: box-shadow .4s;
+    width: fit-content;
+    height: fit-content;
+}
+
+.highscore__button:hover{
+    box-shadow: 0 14px 54px hsla(203, 71%, 60%, 0.7);
+}
+
+.home__images,
+.home__data{
+    display: grid;
+}
+
+.home__images-cube{
+    width: 250px;
+    justify-self: center;
+}
+
+.home__images-cube img{
+    filter: drop-shadow(0 4px 32px hsla(203,71%,60%,.5));
+    animation: float-cube 4s ease-in-out infinite;
+}
+
+.home__footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home__footer span{
+    padding: 0.8rem;
+}
+
+.home__footer-title{
+    padding-bottom: 2rem;
+}
+
+.home__footer{
+    margin-top: 2.5rem;
+    column-gap: 3.5rem;
+}
+
+/* Shapes */
+.home__shape-small,
+.home__shape-big1,
+.home__shape-big2{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(200px);
+}
+
+.home__shape-small{
+    width: 150px;
+    height: 150px;
+    background-color: var(--first-color);
+    top: -2.5rem;
+    left: -1.5rem;
+}
+
+.home__shape-big1,
+.home__shape-big2{
+    width: 250px;
+    height: 250px;
+}
+
+.home__shape-big1{
+    background-color: var(--first-color);
+    top: 16rem;
+    right: -6.5rem;
+}
+
+.home__shape-big2{
+    background-color: var(--second-color);
+    left: -3.5rem;
+    bottom: -4rem;
+}
+
+.home__shape-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: soft-light;
+    opacity: .3;
+}
+
+/* Animáció */
+@keyframes float-cube{
+    0%{
+        transform: translateY(.5rem);
+    }
+    50%{
+        transform: translateY(2rem);
+    }
+    100%{
+        transform: translateY(.5rem);
+    }
+}
+
+/*================== BREAKPOINTS =================*/
+/* Kicsi eszközökre */
+@media screen and (max-width: 330px){
+    .container{
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .home__images-cube {
+        width: 130px;
+    }
+    
+    .home__title{
+        font-size: 2.4rem;
+    }
+}
+
+@media screen and (max-height: 786px){
+    .home__container{
+        padding-top: 8rem;
+    }
+    .home__images-cube{
+        width: 140px;
+    }
+}
+
+@media screen and (max-height: 745px){
+    .home__title{
+        font-size: 2rem;
+    }
+
+    .home__description{
+        font-size: 0.7rem;
+    }
+
+    .highscore__button{
+        font-size: 0.9rem;
+        width: 8rem;
+        height: 3rem;
+        padding: 0.85rem 0.5rem 2rem 1rem;
+    }
+
+    .home__images-cube{
+        width: 150px;
+    }
+}
+
+@media screen and (max-height: 740px){
+    .home__title{
+        font-size: 1.9rem;
+    }
+    .home__description{
+        font-size: 0.8rem;
+    }
+    .home__images-cube{
+        width: 100px;
+    }
+    .highscore__button{
+        font-size: 0.8rem; 
+        width: 7rem;
+        height: 2.5rem;
+        padding: 1rem 1.5rem 2rem 1rem;
+    }
+}
+
+@media screen and (max-height: 653px){
+    .home__title{
+        font-size: 2.1rem;
+    }
+    .home__description{
+        font-size: 0.7rem;
+    }
+
+    .highscore__button{
+        font-size: 0.7rem;
+        width: 6rem;
+        height: 1.5rem;
+        padding: 0.5rem 1rem 1.5rem 0.75rem;
+    }
+}
+
+@media screen and (max-height: 533px){
+    .home__container{
+        padding-top: 6rem;
+    }
+
+    .home__images-cube{
+        width: 90px;
+    }
+}
+
+@media screen and (max-height: 480px){
+    .home__container{
+        padding-top: 5rem;
+    }
+
+    .home__title{
+        font-size: 1.8rem;
+    }
+
+    .home__description{
+        font-size: 0.6rem;
+    }
+
+    .home__images-cube{
+        width: 70px;
+    }
+}
+
+@media screen and (max-height: 360px){
+    .home__container{
+        padding-top: 0rem;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .home__images-cube{
+        display: none;
+    }
+
+    .nav__menu{
+        height: 360px;
+        padding-top: 5rem;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .home__shape-small{
+        width: 220px;
+        height: 220px;
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .home__shape-big1{
+        width: 300px;
+        height: 300px;
+        right: -5rem;
+        top: 25rem;
+    }
+
+    .home__shape-big2{
+        width: 300px;
+        height: 300px;
+        left: 3rem;
+        bottom: -3rem;
+    }
+}
+
+/* Közepes eszközökre */
+@media screen and (min-width: 600px){
+    .home__title{
+        font-size: 2.8rem;
+        padding-top: 7rem;
+    }
+
+    .home__shape-small{
+        width: 250px;
+        height: 250px;
+        top: 2rem;
+        left: 1rem;
+    }
+
+    .home__shape-big1{
+        width: 350px;
+        height: 350px;
+        right: -10rem;
+        top: 30rem;
+    }
+
+    .home__shape-big2{
+        width: 350px;
+        height: 350px;
+        left: 5rem;
+        bottom: -3rem;
+    }
+}
+
+@media screen and (min-width: 767px){
+    .nav{
+        height: calc(var(--header-height) + 1.5rem);
+    }
+
+    .nav__toggle,
+    .nav__close,
+    .nav__img{
+        display: none;
+    }
+
+    .nav__list{
+        flex-direction: row;
+        column-gap: 3rem;
+        font-size: 1rem;
+
+    }
+
+    .home__container{
+        height: 100vh;
+        grid-template-columns: repeat(2,max-content);
+        align-items: center;
+        justify-content: center;
+        column-gap: 4rem;
+        padding-top: 4rem;
+    }
+
+    .home__images-cube{
+        width: 150px;
+    }
+
+    .home__description{
+        font-size: .8rem;
+    }
+
+    .home__title{
+        font-size: 3.3rem;
+    }
+
+    .home__shape-small{
+        width: 270px;
+        height: 270px;
+        top: 0rem;
+        left: 0rem;
+    }
+
+    .home__shape-big1{
+        width: 470px;
+        height: 470px;
+        right: -15rem;
+    }
+
+    .home__shape-big2{
+        width: 470px;
+        height: 470px;
+        left: 5rem;
+        bottom: -10rem;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .home__images-cube{
+        width: 200px;
+    }
+
+    .home__title{
+        font-size: 4rem;
+    }
+
+    .home__shape-small{
+        width: 250px;
+        height: 250px;
+        top: -3rem;
+        left: 0rem;
+    }
+
+    .home__shape-big1{
+        width: 500px;
+        height: 500px;
+        right: -20rem;
+    }
+
+    .home__shape-big2{
+        width: 500px;
+        height: 500px;
+        left: 10rem;
+        bottom: -20rem;
+    }
+}
+
+/* Nagy eszközökre */
+@media screen and (min-width: 1024px){
+    .home__title{
+        margin-bottom: 1rem;
+    }
+
+    .home__description{
+        margin-bottom: 3rem;
+    }
+
+    .home__images-cube{
+        width: 200px;
+    }
+    .home__shape-small,
+    .home__shape-big1,
+    .home__shape-big2{
+        filter: blur(200px);
+    }
+
+    .home__shape-small{
+        width: 300px;
+        height: 300px;
+        top: -5rem;
+        left: -2rem;
+    }
+
+    .home__shape-big1,
+    .home__shape-big2{
+        width: 400px;
+        height: 400px;
+    }
+
+    .home__shape-big1{
+        top: 20rem;
+        right: -10rem;
+    }
+
+    .home__shape-big2{
+        left: 14rem;
+        bottom: -10rem;
+    }
+}
+
+@media screen and (min-width: 1048px){
+    .container{
+        margin-inline: auto;
+    }
+
+    .home__shape-small{
+        width: 300px;
+        height: 300px;
+        top: -5rem;
+        left: -2rem;
+    }
+
+    .home__shape-big1{
+        width: 600px;
+        height: 600px;
+        right: -20rem;
+        top: 20rem;
+    }
+
+    .home__shape-big2{
+        width: 600px;
+        height: 600px;
+        left: 10rem;
+        bottom: -20rem;
+    }
+}
+
+@media screen and (min-width: 1500px){
+    .home__shape-big2{
+        left: 28rem;
+    }
+
+    .nav__logo{
+        font-size: 1.2rem;
+    }
+
+    .nav__list{
+        padding-left: 3.5rem;
+    }
+
+    .nav__link{
+        font-size: 1.2rem;
+    }
+
+    .home__title{
+        font-size: 4.2rem;
+    }
+
+    .home__description{
+        font-size: 1.1rem;
+    }
+
+    .home__images-cube{
+        width: 250px;
+    }
+
+    .home__shape-small{
+        width: 400px;
+        height: 400px;
+        top: -15rem;
+        left: 1rem;
+    }
+
+    .home__shape-big1{
+        width: 700px;
+        height: 700px;
+        right: -25rem;
+    }
+
+    .home__shape-big2{
+        width: 700px;
+        height: 700px;
+        left: 15rem;
+        bottom: -30rem;
+    }
+}
+
+@media screen and (min-width: 1800px){
+    .nav__logo{
+        font-size: 1.5rem;
+    }
+
+    .nav__list{
+        padding-left: 5rem;
+    }
+
+    .nav__link{
+        font-size: 1.5rem;
+    }
+
+    .home__title{
+        font-size: 4.5rem;
+    }
+
+    .home__description{
+        font-size: 1.3rem;
+    }
+
+    .home__images-cube{
+        width: 300px;
+    }
+
+    .highscore__button{
+        font-size: 1.6rem;
+        width: 13rem;
+        height: 4rem;
+        padding: 1rem 1rem 3.5rem 1.25rem;
+    }
+
+    .home__shape-small{
+        width: 500px;
+        height: 500px;
+        top: -15rem;
+        left: 1rem;
+    }
+
+    .home__shape-big1{
+        width: 800px;
+        height: 800px;
+        right: -25rem;
+    }
+
+    .home__shape-big2{
+        width: 800px;
+        height: 800px;
+        left: 15rem;
+        bottom: -25rem;
+    }
+}
+
+
+@media screen and (min-width: 2500px){
+    .nav__logo{
+        font-size: 1.7rem;
+    }
+
+    .nav__link{
+        font-size: 1.7rem;
+    }
+
+    .home__title{
+        font-size: 6rem;
+    }
+
+    .home__description{
+        font-size: 1.6rem;
+    }
+
+    .home__images-cube{
+        width: 500px;
+    }
+
+    .highscore__button{
+        font-size: 1.8rem;
+        width: 16rem;
+        height: 6rem;
+        padding: 2rem 1rem 4.5rem 2.25rem;
+    }
+
+    .home__shape-small{
+        width: 600px;
+        height: 600px;
+        top: -15rem;
+        left: 1rem;
+    }
+
+    .home__shape-big1{
+        width: 900px;
+        height: 900px;
+        right: -25rem;
+    }
+
+    .home__shape-big2{
+        width: 900px;
+        height: 900px;
+        left: 15rem;
+        bottom: -30rem;
+    }
+}
